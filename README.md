@@ -1,4 +1,4 @@
-# Early Battery Fault Detection using Multi-Feature Clustering and Unsupervised Scoring
+# 🔋 Early Battery Fault Detection using Multi-Feature Clustering and Unsupervised Scoring
 
 [![License](https://img.shields.io/github/license/BatICM/unsupervised-battery-faults)](https://github.com/BatICM/unsupervised-battery-faults/blob/main/LICENSE)
 [![Python](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
@@ -9,14 +9,14 @@ This repository implements the early fault detection algorithm for lithium-ion b
 
 This project presents a novel approach for early detection of lithium-ion battery faults in electric vehicles (EVs), addressing a critical safety challenge in the rapidly growing EV market. Using cloud-based battery data, our method employs multi-feature clustering and unsupervised scoring to detect potential faults significantly earlier than traditional Battery Management Systems (BMS).
 
-### Key Features
+## 🚀 Key Features
 
 - **Multi-feature extraction** to characterize battery faults from various perspectives
 - **Unsupervised clustering** for real-time anomaly detection without labeled training data
 - **Hierarchical warning strategy** to minimize false alarms while providing early detection
 - **Validated on real-world EV data** with over 10 days advance warning compared to BMS
 
-## Method
+## 📊 Method
 
 Our algorithm consists of four main components:
 
@@ -31,57 +31,8 @@ Our algorithm consists of four main components:
    - Sliding window technique for iterative scoring
 4. **Hierarchical Warning**: Two-level warning strategy using thresholds and cumulative sum
 
-## Repository Structure
 
-```
-unsupervised-battery-faults/
-│
-├── data/                                # Raw data directory
-│   ├── car1.csv                         # Battery data for car type 1
-│   ├── car2.csv                         # Battery data for car type 2
-│   ├── car3.csv                         # Battery data for car type 3
-│   └── car4.csv                         # Battery data for car type 4
-│
-├── code_new/                            # Main code directory
-│   ├── preprocessing.py                 # Data preprocessing module with vehicle-specific functions
-│   │   ├── preprocess_car1()            # Car1-specific preprocessing
-│   │   ├── preprocess_car2()            # Car2-specific preprocessing 
-│   │   ├── preprocess_car3()            # Car3-specific preprocessing
-│   │   └── preprocess_car4()            # Car4-specific preprocessing
-│   │
-│   ├── feature_extraction/              # Feature extraction modules
-│   │   ├── shannon_entropy.py           # Shannon entropy feature extraction
-│   │   │   ├── ShannonEn()              # Shannon entropy calculation for single window
-│   │   │   └── ShannonEn_K_Ensemble()   # Ensemble Shannon entropy across sliding windows
-│   │   │
-│   │   ├── srm.py                       # State Relation Method implementation
-│   │   │   └── SRM()                    # State Relation Method algorithm
-│   │   │
-│   │   └── rmse.py                      # Root Mean Square Error feature extraction
-│   │       └── calculate_window_mean()  # RMSE calculation with sliding windows
-│   │
-│   ├── clustering/                      # Clustering and anomaly detection
-│   │   ├── dbscan_clustering.py         # DBSCAN clustering implementation
-│   │   └── cusum_alarm.py               # CUSUM alarm detection algorithm
-│   │       └── cusum_alarm_detection()  # Cumulative sum alarm detection function
-│   │
-│   ├── visualization/                   # Data visualization utilities
-│   │   ├── plot_scores.py               # Score plotting functionality
-│   │   └── plot_alarms.py               # Alarm visualization
-│   │
-│   └── main.py                          # Main script that orchestrates the entire workflow
-│
-├── output/                              # Output directory for results and plots
-│   ├── alarm_plots/                     # Generated alarm plots
-│   └── feature_plots/                   # Feature visualization plots
-│
-├── notebooks/                           # Jupyter notebooks for analysis and exploration
-│   ├── data_exploration.ipynb           # Data exploration notebook
-│   └── model_evaluation.ipynb           # Model evaluation notebook
-│
-└── README.md                            # Project documentation
-
-## Installation
+## 📋 Installation
 
 Clone this repository and install the required packages:
 
@@ -97,13 +48,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 ```
-
-## Usage
-```
-
-### Example Notebook
-
-See the `notebooks/demo.ipynb` for a complete example of using the algorithm on sample data.
 
 ## Parameters
 
