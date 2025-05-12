@@ -74,7 +74,7 @@ When tested on data from three different vehicles with battery faults, our metho
 
 ## Citation
 
-If you use this code in your research, please cite our paper:
+If you use the data or code in your research, please cite our paper:
 
 ```bibtex
 @article{nie2025early,
