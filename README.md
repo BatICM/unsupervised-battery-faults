@@ -35,24 +35,51 @@ Our algorithm consists of four main components:
 
 ```
 unsupervised-battery-faults/
-├── data/
-│   └── sample_data.csv
-├── src/
-│   ├── __init__.py
-│   ├── data_preprocessing.py
-│   ├── feature_extraction.py
-│   ├── unsupervised_scoring.py
-│   ├── hierarchical_warning.py
-│   └── utils.py
-├── notebooks/
-│   ├── demo.ipynb
-│   └── visualization.ipynb
-├── results/
-│   └── example_results.csv
-├── requirements.txt
-├── setup.py
-└── README.md
-```
+│
+├── data/                                # Raw data directory
+│   ├── car1.csv                         # Battery data for car type 1
+│   ├── car2.csv                         # Battery data for car type 2
+│   ├── car3.csv                         # Battery data for car type 3
+│   └── car4.csv                         # Battery data for car type 4
+│
+├── code_new/                            # Main code directory
+│   ├── preprocessing.py                 # Data preprocessing module with vehicle-specific functions
+│   │   ├── preprocess_car1()            # Car1-specific preprocessing
+│   │   ├── preprocess_car2()            # Car2-specific preprocessing 
+│   │   ├── preprocess_car3()            # Car3-specific preprocessing
+│   │   └── preprocess_car4()            # Car4-specific preprocessing
+│   │
+│   ├── feature_extraction/              # Feature extraction modules
+│   │   ├── shannon_entropy.py           # Shannon entropy feature extraction
+│   │   │   ├── ShannonEn()              # Shannon entropy calculation for single window
+│   │   │   └── ShannonEn_K_Ensemble()   # Ensemble Shannon entropy across sliding windows
+│   │   │
+│   │   ├── srm.py                       # State Relation Method implementation
+│   │   │   └── SRM()                    # State Relation Method algorithm
+│   │   │
+│   │   └── rmse.py                      # Root Mean Square Error feature extraction
+│   │       └── calculate_window_mean()  # RMSE calculation with sliding windows
+│   │
+│   ├── clustering/                      # Clustering and anomaly detection
+│   │   ├── dbscan_clustering.py         # DBSCAN clustering implementation
+│   │   └── cusum_alarm.py               # CUSUM alarm detection algorithm
+│   │       └── cusum_alarm_detection()  # Cumulative sum alarm detection function
+│   │
+│   ├── visualization/                   # Data visualization utilities
+│   │   ├── plot_scores.py               # Score plotting functionality
+│   │   └── plot_alarms.py               # Alarm visualization
+│   │
+│   └── main.py                          # Main script that orchestrates the entire workflow
+│
+├── output/                              # Output directory for results and plots
+│   ├── alarm_plots/                     # Generated alarm plots
+│   └── feature_plots/                   # Feature visualization plots
+│
+├── notebooks/                           # Jupyter notebooks for analysis and exploration
+│   ├── data_exploration.ipynb           # Data exploration notebook
+│   └── model_evaluation.ipynb           # Model evaluation notebook
+│
+└── README.md                            # Project documentation
 
 ## Installation
 
@@ -72,29 +99,6 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-
-### Quick Start
-
-```python
-from src import battery_fault_detection
-
-# Load and preprocess your data
-data = battery_fault_detection.load_data("path/to/your/data.csv")
-preprocessed_data = battery_fault_detection.preprocess_data(data)
-
-# Run the detection algorithm
-results = battery_fault_detection.detect_faults(
-    preprocessed_data,
-    eps=0.6,                   # DBSCAN epsilon parameter
-    min_pts=3,                 # DBSCAN MinPts parameter
-    threshold_1=0.5,           # First-level warning threshold
-    threshold_2=100,           # Second-level warning threshold
-    window_length="auto"       # Auto-select window length based on cell count
-)
-
-# View detection results
-print(results.summary())
-battery_fault_detection.visualize_results(results)
 ```
 
 ### Example Notebook
